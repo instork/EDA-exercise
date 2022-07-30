@@ -72,8 +72,8 @@ class CoinDataLoader(BaseDataLoader):
         return news_df.merge(price_df, left_on='etz_time', right_on='etz_time')
 
     def load_price(self, target: str) -> pd.DataFrame:
-        price_df = pd.DataFrame(list(self.db[ALIAS[target]].find({"utc_time":
-                    {"$gte":self.start, "$lt":self.end+dt.timedelta(1)}})))
+        price_df = pd.DataFrame(list(self.db[ALIAS[target]].find(
+                    {"utc_time":{"$gte":self.start, "$lt":self.end+dt.timedelta(1)}})))
 
         price_df['etz_time'] = price_df['utc_time'].apply(lambda x: self.etz_timezone(x))
         price_df = price_df[['etz_time','opening_price','high_price','low_price','trade_price','candle_acc_trade_volume','market']]
@@ -86,8 +86,8 @@ class CoinDataLoader(BaseDataLoader):
         return price_df
 
     def load_news(self) -> pd.DataFrame:
-        news_df = pd.DataFrame(list(self.db['news'].find({"etz_time":
-                    {"$gte":self.start, "$lt":self.end}})))
+        news_df = pd.DataFrame(list(self.db['news'].find(
+            {"etz_time":{"$gte":self.start, "$lt":self.end}})))
 
         news_df.drop(['_id'], axis=1, inplace=True)
         news_df['etz_time'] = news_df['etz_time'].apply(lambda x: x.date())
