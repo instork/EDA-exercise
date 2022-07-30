@@ -6,3 +6,8 @@ pendulum
 tqdm
 pandas
 matplotlib
+seaborn
+statsmodels
+scipy
+gcc=12.1.0
+pandas-datareader
