@@ -5,15 +5,12 @@ python-dotenv == 0.20.0
 pendulum
 tqdm
 pandas
-<<<<<<< HEAD
 matplotlib
 seaborn
 statsmodels
 scipy
 gcc=12.1.0
 pandas-datareader
-=======
 nltk
 wordcloud
 mplfinance
->>>>>>> origin/main
